@@ -1,0 +1,145 @@
+body {
+	background-image: url('img/squares.png');
+}
+
+.scene {
+  /*
+    La scene fait 270x270 pixels.
+    On la centre dans la page avec la technique du position:absolute;
+  */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 270px;
+  height: 270px;
+  margin-left: -135px;
+  margin-top: -135px;
+  perspective: 1000px;
+
+
+  /* N'oubliez pas ici d'appliquer en plus une perspective, afin que l'effet 3D puisse avoir lieu */
+}
+
+.cube{
+  width: 270px;
+  height: 270px;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: cube 5s linear infinite;
+
+}
+
+.cubeface {
+  /* Chaque face du cube est positionnée l'une sur l'autre */
+  position: absolute;
+  top: 0;
+  left: 0; 
+
+}
+
+#face1{ /*face de devant*/
+
+  transform: translateZ(135px); 
+  animation: cuber 10s ease 4s 2 none running;
+
+}
+
+#face2{ /*face droite*/
+
+  transform: translateX(135px) rotateY(90deg); /*rotateZ(90deg)*/
+  animation: cuberb 10s ease 4s 2 none running;
+
+}
+
+#face3{ /*face gauche*/
+
+  transform: translateX(-135px) rotateY(90deg); /*rotateZ(90deg)*/
+   animation: cuberc 10s ease 4s 2 none running;
+}
+
+#face4{ /*face bas*/
+  
+  transform: translateY(135px) rotateX(90deg); /*rotateZ(90deg)*/
+  animation: cuberd 10s ease 4s 2 none running;
+}
+
+#face5{ /*face haut*/
+  
+  transform: translateY(-135px) rotateX(90deg); /*rotateZ(90deg)*/
+  animation: cubere 10s ease 4s 2 none running;
+}
+
+#face6{ /*face derrière*/
+  
+  transform: translateZ(-135px);
+  animation: cubera 10s ease 4s 2 none running;
+}
+
+@keyframes cube{
+
+    from{
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    to{
+      
+      transform: rotateX(360deg) rotateY(360deg);  
+    }
+}
+
+@keyframes cuber{ /*face devant*/
+
+    0% {transform: translateZ(135px);}
+
+    50% {transform: translateZ(200px);}
+
+    100% {transform: translateZ(135px);}
+
+}
+
+@keyframes cubera{ /*face derrière*/
+
+    0% {transform: translateZ(-135px);}
+
+    50% {transform: translateZ(-200px);}
+
+    100% {transform: translateZ(-135px);}
+
+}
+
+@keyframes cuberb{ /*face droite*/
+
+    0% {transform: translateX(135px) rotateY(90deg);}
+       
+    50% {transform: translateX(200px) rotateY(90deg);}
+         
+    100% {transform: translateX(135px) rotateY(90deg);}
+}  
+
+@keyframes cuberc{ /*face gauche*/
+
+    0% {transform: translateX(-135px) rotateY(90deg);}
+       
+    50% {transform: translateX(-200px) rotateY(90deg);}
+         
+    100% {transform: translateX(-135px) rotateY(90deg);}
+}  
+
+@keyframes cuberd{ /*face bas*/
+
+    0% {transform: translateY(135px) rotateX(90deg);}
+       
+    50% {transform: translateY(200px) rotateX(90deg);}
+         
+    100% {transform: translateY(135px) rotateX(90deg);}
+}  
+
+@keyframes cubere{ /*face haut*/
+
+  0% {transform: translateY(-135px) rotateX(90deg);}
+       
+  50% {transform: translateY(-200px) rotateX(90deg);}
+         
+  100% {transform: translateY(-135px) rotateX(90deg);}
+
+}
